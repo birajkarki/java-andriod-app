@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "778840832587",
+    "project_id": "mapsforevents-419907",
+    "storage_bucket": "mapsforevents-419907.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778840832587:android:a7b4c4a4f1454f28b5abce",
+        "android_client_info": {
+          "package_name": "com.example.mapsforevents"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxQxMCHUuR7AOgOISIUSKfVfcIdPnAs0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

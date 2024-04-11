@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="id_map" type="id" />
+    <item name="editTextEventName" type="id" />
+    <item name="backButton" type="id" />
+    <item name="mapView" type="id" />
+    <item name="buttonUpdateActivity" type="id" />
+    <item name="textViewLocation" type="id" />
+</resources>
