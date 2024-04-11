@@ -1,5 +1,4 @@
 package com.example.mapsforevents;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class EditExistingActivity extends AppCompatActivity {
 
     private EditText editTextTitle, editTextSummary, editTextTime, editTextDate, editTextContact, editTextLocation;
+    private double latitude;
+    private double longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,10 @@ public class EditExistingActivity extends AppCompatActivity {
         String activityDate = getIntent().getStringExtra("activityDate");
         String activityContact = getIntent().getStringExtra("activityContact");
         String activityLocation = getIntent().getStringExtra("activityLocation");
+
+        // Retrieve latitude and longitude values
+        latitude = getIntent().getDoubleExtra("latitude", 0);
+        longitude = getIntent().getDoubleExtra("longitude", 0);
 
         // Pre-fill the form with existing activity details
         editTextTitle.setText(activityTitle);
@@ -67,6 +72,8 @@ public class EditExistingActivity extends AppCompatActivity {
                 intent.putExtra("activityDate", updatedDate);
                 intent.putExtra("activityContact", updatedContact);
                 intent.putExtra("activityLocation", updatedLocation);
+                intent.putExtra("latitude", latitude); // Pass latitude to ImageUploadActivity
+                intent.putExtra("longitude", longitude); // Pass longitude to ImageUploadActivity
                 startActivity(intent);
 
                 // Display a toast message indicating success

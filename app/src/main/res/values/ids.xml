@@ -6,4 +6,7 @@
     <item name="mapView" type="id" />
     <item name="buttonUpdateActivity" type="id" />
     <item name="textViewLocation" type="id" />
+    <item name="buttonBack" type="id" />
+    <item name="map" type="id" />
+    <item name="textViewHeader" type="id" />
 </resources>

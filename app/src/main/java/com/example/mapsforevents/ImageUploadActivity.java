@@ -1,8 +1,5 @@
 package com.example.mapsforevents;
-
 import android.app.Activity;
-
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -25,6 +22,8 @@ public class ImageUploadActivity extends Activity {
     private Uri filePath;
     private DatabaseReference mDatabase;
     private String eventName;
+    private double latitude;
+    private double longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +35,10 @@ public class ImageUploadActivity extends Activity {
         // Initialize Firebase database
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        // Get the event name from the intent
+        // Get the event name and location from the intent
         eventName = getIntent().getStringExtra("eventName");
+        latitude = getIntent().getDoubleExtra("latitude", 0);
+        longitude = getIntent().getDoubleExtra("longitude", 0);
 
         // Set onClickListener for buttonLoadImage
         Button buttonLoadImage = findViewById(R.id.buttonLoadImage);
@@ -47,7 +48,6 @@ public class ImageUploadActivity extends Activity {
                 openFileChooser();
             }
         });
-        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         // Set onClickListener for buttonDone
         Button buttonDone = findViewById(R.id.buttonDone);
@@ -96,8 +96,9 @@ public class ImageUploadActivity extends Activity {
         Log.d("ImageUploadActivity", "Event Date: " + getIntent().getStringExtra("activityDate"));
         Log.d("ImageUploadActivity", "Event Contact: " + getIntent().getStringExtra("activityContact"));
         Log.d("ImageUploadActivity", "Event Location: " + getIntent().getStringExtra("activityLocation"));
+        Log.d("ImageUploadActivity", "Latitude: " + latitude);
+        Log.d("ImageUploadActivity", "Longitude: " + longitude);
         Log.d("ImageUploadActivity", "Image URI: " + filePath.toString());
-//        Log.d("ImageUploadActivity", "longitute" + getIntent().getStringExtra("activity"))
 
         // Now, you can store this information in Firebase Realtime Database
 
@@ -110,11 +111,11 @@ public class ImageUploadActivity extends Activity {
         eventValues.put("date", getIntent().getStringExtra("activityDate"));
         eventValues.put("contact", getIntent().getStringExtra("activityContact"));
         eventValues.put("location", getIntent().getStringExtra("activityLocation"));
+        eventValues.put("latitude", latitude);
+        eventValues.put("longitude", longitude);
         eventValues.put("imageUri", filePath.toString());
         assert eventId != null;
         mDatabase.child("events").child(eventId).setValue(eventValues);
-
-
 
         // Display a toast message indicating success
         Toast.makeText(ImageUploadActivity.this, "Event details uploaded successfully!", Toast.LENGTH_SHORT).show();
